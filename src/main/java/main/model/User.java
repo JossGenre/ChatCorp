@@ -1,4 +1,4 @@
-package mian.model;
+package main.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
