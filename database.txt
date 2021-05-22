@@ -1,13 +1,13 @@
-// таблица пользователи
+user — пользователи
 
-id INT NOT NULL AUTO_INCREMENT
-reg_time DATETIME NOT NULL
-session_id VARCHAR(255) NOT NULL
-name VARCHAR(255) NOT NULL
+- id INT NOT NULL AUTO_INCREMENT
+- reg_time DATETIME NOT NULL
+- session_id VARCHAR(255) NOT NULL
+- name VARCHAR(255) NOT NULL
 
-// вторая таблица
+message
 
-id INT NOT NULL AUTO_INCREMENT
-user_id INT NOT NULL
-time DATETIME NOT NULL
-message TEXT NOT NULL
+- id INT NOT NULL AUTO_INCREMENT
+- user_id INT NOT NULL
+- time DATETIME NOT NULL
+- message TEXT NOT NULL
