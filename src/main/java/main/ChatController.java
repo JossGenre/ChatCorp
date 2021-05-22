@@ -7,6 +7,7 @@ import main.repos.UserRepository;
 import main.response.AddMessageResponse;
 import main.response.AuthResponse;
 import main.response.MessageResponse;
+import main.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -78,7 +79,7 @@ public class ChatController {
     }
 
     @GetMapping(path = "/api/messages")
-    public HashMap<String, List> getMessages() {
+    public HashMap<String, List<MessageResponse>> getMessages() {
         ArrayList<MessageResponse> messagesList =
                 new ArrayList<>();
         Iterable<Message> messages = messageRepository.findAll();
@@ -91,8 +92,23 @@ public class ChatController {
             messageItem.setText(message.getText());
             messagesList.add(messageItem);
         }
-        HashMap<String, List> response = new HashMap<>();
+        HashMap<String, List<MessageResponse>> response = new HashMap<>();
         response.put("messages", messagesList);
+        return response;
+    }
+
+    @GetMapping (path = "/api/users")
+    public HashMap<String, List<UserResponse>> getUsers() {
+        ArrayList<UserResponse> usersList =
+                new ArrayList<>();
+        Iterable<User> users = userRepository.findAll();
+        for(User user : users) {
+            UserResponse userItem = new UserResponse();
+            userItem.setName(user.getName());
+            usersList.add(userItem);
+        }
+        HashMap<String, List<UserResponse>> response = new HashMap<>();
+        response.put("users", usersList);
         return response;
     }
 
